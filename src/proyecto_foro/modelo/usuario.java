@@ -4,10 +4,12 @@
  */
 package proyecto_foro.modelo;
 
-/**
- *
- * @author dhaca
- */
 public class usuario {
+    private int id;
+    private String nombre;
+    private String email;
+    private String password;
+
     
 }
+
