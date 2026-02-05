@@ -1,19 +1,19 @@
 package proyecto_foro.vista;
 
 import proyecto_foro.dao.mensajeDAO;
-import proyecto_foro.modelo.mensaje;
-import proyecto_foro.modelo.usuario;
+import proyecto_foro.modelo.Mensaje;
+import proyecto_foro.modelo.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class ForoFrame extends JFrame {
 
-    private usuario usuario;
+    private Usuario usuario;
     private JTextArea txtMensajes;
     private JTextField txtNuevoMensaje;
 
-    public ForoFrame(usuario usuario) {
+    public ForoFrame(Usuario usuario) {
         this.usuario = usuario;
         setTitle("Foro - Usuario: " + usuario.getNombre());
         setSize(400, 300);
@@ -46,7 +46,7 @@ public class ForoFrame extends JFrame {
 
     private void enviarMensaje() {
         String contenido = txtNuevoMensaje.getText();
-        mensaje mensaje = new Mensaje(contenido, usuario.getId());
+        Mensaje mensaje = new Mensaje(contenido, usuario.getId());
 
         mensajeDAO dao = new mensajeDAO();
         dao.publicarMensaje(mensaje);

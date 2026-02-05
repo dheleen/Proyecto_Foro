@@ -5,14 +5,14 @@
 package proyecto_foro.dao;
 
 import proyecto_foro.conexion.conexionBD;
-import proyecto_foro.modelo.mensaje;
+import proyecto_foro.modelo.Mensaje;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class mensajeDAO {
 
-    public boolean publicarMensaje(mensaje mensaje) {
+    public boolean publicarMensaje(Mensaje mensaje) {
         String sql = "INSERT INTO mensaje (contenido, id_usuario) VALUES (?, ?)";
         try (Connection conn = conexionBD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {

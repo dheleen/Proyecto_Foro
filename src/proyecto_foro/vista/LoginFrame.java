@@ -1,7 +1,7 @@
 package proyecto_foro.vista;
 
 import proyecto_foro.dao.usuarioDAO;
-import proyecto_foro.modelo.usuario;
+import proyecto_foro.modelo.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -54,7 +54,7 @@ public class LoginFrame extends JFrame {
         String password = new String(txtPassword.getPassword());
 
         usuarioDAO dao = new usuarioDAO();
-        usuario usuario = dao.login(email, password);
+        Usuario usuario = dao.login(email, password);
 
         if (usuario != null) {
             JOptionPane.showMessageDialog(this, "Bienvenido " + usuario.getNombre());

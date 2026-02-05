@@ -5,7 +5,7 @@
 package proyecto_foro.servicio;
 
 import proyecto_foro.dao.usuarioDAO;
-import proyecto_foro.modelo.usuario;
+import proyecto_foro.modelo.Usuario;
 
 public class autentificacion {
     private usuarioDAO usuarioDao;
@@ -14,8 +14,8 @@ public class autentificacion {
         this.usuarioDao = new usuarioDAO();
     }
 
-    public usuario login(String email, String password) {
-        usuario u = usuarioDao.buscarPorEmail(email);
+    public Usuario login(String email, String password) {
+        Usuario u = usuarioDao.buscarPorEmail(email);
         if (u != null && u.getPassword().equals(password)) {
             return u;
         }

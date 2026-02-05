@@ -5,12 +5,12 @@
 package proyecto_foro.dao;
 
 import proyecto_foro.conexion.conexionBD;
-import proyecto_foro.modelo.usuario;
+import proyecto_foro.modelo.Usuario;
 import java.sql.*;
 
 public class usuarioDAO {
 
-    public boolean registrarUsuario(usuario usuario) {
+    public boolean registrarUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuario (nombre, email, password) VALUES (?, ?, ?)";
         try (Connection conn = conexionBD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -27,7 +27,7 @@ public class usuarioDAO {
         }
     }
 
-    public usuario buscarPorEmail(String email) {
+    public Usuario buscarPorEmail(String email) {
         String sql = "SELECT * FROM usuario WHERE email = ?";
         try (Connection conn = conexionBD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -36,7 +36,7 @@ public class usuarioDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                usuario u = new usuario();
+                Usuario u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setNombre(rs.getString("nombre"));
                 u.setEmail(rs.getString("email"));
