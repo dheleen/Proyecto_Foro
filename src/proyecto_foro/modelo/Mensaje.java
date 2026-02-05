@@ -4,28 +4,31 @@
  */
 package proyecto_foro.modelo;
 
-/**
- *
- * @author dhaca
- */
-public class mensaje {
+import java.sql.Timestamp;
+
+public class Mensaje {
+
     private int id;
     private String contenido;
-    private String fecha;
+    private Timestamp fecha;
     private int idUsuario;
-    
-    //constructor vacío
-    public mensaje() {}
 
-    // Constructor con parámetros
-    public mensaje(int id, String contenido, String fecha, int idUsuario) {
+    // Constructor vacío
+    public Mensaje() {
+    }
+
+    public Mensaje(String contenido, int idUsuario) {
+        this.contenido = contenido;
+        this.idUsuario = idUsuario;
+    }
+
+    public Mensaje(int id, String contenido, Timestamp fecha, int idUsuario) {
         this.id = id;
         this.contenido = contenido;
         this.fecha = fecha;
         this.idUsuario = idUsuario;
     }
-    //yaaaaaaaaaaaaaaa
-    
+
     // Getters y Setters
     public int getId() {
         return id;
@@ -41,10 +44,10 @@ public class mensaje {
         this.contenido = contenido;
     }
 
-    public String getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 
@@ -54,6 +57,5 @@ public class mensaje {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-
-
 }
+
