@@ -32,7 +32,6 @@ public class ForoPanel extends JPanel {
         setBackground(new Color(245, 245, 245));
         setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Panel superior con información de usuario y logout
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(new Color(245, 245, 245));
         topPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
@@ -49,7 +48,6 @@ public class ForoPanel extends JPanel {
         topPanel.add(lblUsuario, BorderLayout.WEST);
         topPanel.add(btnLogout, BorderLayout.EAST);
         
-        // Panel de mensajes con scroll
         mensajesPanel = new JPanel();
         mensajesPanel.setLayout(new BoxLayout(mensajesPanel, BoxLayout.Y_AXIS));
         mensajesPanel.setBackground(Color.WHITE);
@@ -65,7 +63,6 @@ public class ForoPanel extends JPanel {
         ));
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-        // Panel inferior para enviar mensajes
         JPanel bottomPanel = new JPanel(new BorderLayout(10, 0));
         bottomPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
         
@@ -86,16 +83,13 @@ public class ForoPanel extends JPanel {
         bottomPanel.add(txtNuevoMensaje, BorderLayout.CENTER);
         bottomPanel.add(btnEnviar, BorderLayout.EAST);
 
-        // Agregar componentes al panel principal
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Listeners
         btnEnviar.addActionListener(this::enviarMensaje);
         btnLogout.addActionListener(e -> mainFrame.logout());
         
-        // Actualizar información de usuario
         actualizarInfoUsuario();
     }
     
@@ -115,7 +109,6 @@ public class ForoPanel extends JPanel {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         
         for (Mensaje m : mensajes) {
-            // Crear tarjeta para cada mensaje
             JPanel mensajeCard = new JPanel(new BorderLayout(10, 5));
             mensajeCard.setBackground(Color.WHITE);
             mensajeCard.setBorder(BorderFactory.createCompoundBorder(
@@ -124,7 +117,6 @@ public class ForoPanel extends JPanel {
             ));
             mensajeCard.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
             
-            // Contenido del mensaje
             JTextArea contenido = new JTextArea(m.getContenido());
             contenido.setWrapStyleWord(true);
             contenido.setLineWrap(true);
@@ -132,7 +124,6 @@ public class ForoPanel extends JPanel {
             contenido.setBackground(Color.WHITE);
             contenido.setFont(new Font("Arial", Font.PLAIN, 13));
             
-            // Información del mensaje
             JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
             infoPanel.setBackground(Color.WHITE);
             

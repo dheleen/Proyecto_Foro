@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-// MainFrame.java - MODIFICAR
+
 package proyecto_foro.vista;
 
 import proyecto_foro.modelo.Usuario;
@@ -17,15 +17,14 @@ public class MainFrame extends JFrame {
 
     private CardLayout cardLayout;
     private JPanel contenedor;
-    private Usuario usuarioActual; // Guardar usuario logueado
-    private ForoPanel foroPanel; // Referencia al panel de foro
+    private Usuario usuarioActual; 
+    private ForoPanel foroPanel; 
 
     public MainFrame() {
         setTitle("Foro - Aplicación de Escritorio");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // Configurar Look and Feel para mejor apariencia
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -35,7 +34,6 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         contenedor = new JPanel(cardLayout);
         
-        // Crear instancia de ForoPanel que recibe MainFrame
         foroPanel = new ForoPanel(this);
         
         contenedor.add(new LoginPanel(this), LOGIN);
@@ -43,18 +41,16 @@ public class MainFrame extends JFrame {
 
         add(contenedor);
         
-        // Centrar ventana
         setLocationRelativeTo(null);
     }
 
     public void mostrar(String vista) {
         cardLayout.show(contenedor, vista);
         if (vista.equals(FORO)) {
-            foroPanel.cargarMensajes(); // Refrescar mensajes al entrar
+            foroPanel.cargarMensajes(); 
         }
     }
     
-    // Nuevos métodos
     public void setUsuarioActual(Usuario usuario) {
         this.usuarioActual = usuario;
         setTitle("Foro - Bienvenido: " + usuario.getNombre());

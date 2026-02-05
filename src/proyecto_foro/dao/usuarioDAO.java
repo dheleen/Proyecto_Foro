@@ -19,7 +19,7 @@ public class usuarioDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, email);
-            ps.setString(2, password); // Contraseña en texto plano
+            ps.setString(2, password); 
 
             ResultSet rs = ps.executeQuery();
 
@@ -46,7 +46,7 @@ public class usuarioDAO {
 
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getPassword()); // Guardar en texto plano
+            ps.setString(3, usuario.getPassword()); 
             ps.executeUpdate();
             return true;
 
@@ -57,7 +57,7 @@ public class usuarioDAO {
         }
     }
     
-    // Método para verificar si email ya existe
+    
     public boolean emailExiste(String email) {
         String sql = "SELECT COUNT(*) FROM usuario WHERE email = ?";
         
@@ -78,7 +78,7 @@ public class usuarioDAO {
         return false;
     }
     
-    // Método opcional: obtener usuario por ID
+    
     public Usuario obtenerPorId(int id) {
         String sql = "SELECT * FROM usuario WHERE id = ?";
         
@@ -93,7 +93,7 @@ public class usuarioDAO {
                 u.setId(rs.getInt("id"));
                 u.setNombre(rs.getString("nombre"));
                 u.setEmail(rs.getString("email"));
-                // No retornamos la contraseña por seguridad
+                
                 return u;
             }
             
@@ -104,7 +104,6 @@ public class usuarioDAO {
         return null;
     }
     
-    // Método opcional: actualizar datos de usuario
     public boolean actualizarUsuario(Usuario usuario) {
         String sql = "UPDATE usuario SET nombre = ?, email = ? WHERE id = ?";
         

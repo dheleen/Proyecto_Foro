@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-// LoginPanel.java - MODIFICAR
+
 package proyecto_foro.vista;
 
 import proyecto_foro.modelo.Usuario;
@@ -16,44 +16,53 @@ public class LoginPanel extends JPanel {
     private MainFrame mainFrame;
     private JTextField txtEmail;
     private JPasswordField txtPassword;
-    private JTextField txtNombre; // Nuevo campo para registro
-    private JPasswordField txtPasswordConfirm; // Confirmación
-    private JPanel cardPanel; // Para cambiar entre login/registro
+    private JTextField txtNombre; 
+    private JPasswordField txtPasswordConfirm; 
+    private JPanel cardPanel; 
     private CardLayout cardLayout;
 
     public LoginPanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
         
-        // Panel con CardLayout para alternar entre login y registro
+    
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         
-        // Crear ambos paneles
+   
         cardPanel.add(crearLoginPanel(), "LOGIN");
         cardPanel.add(crearRegistroPanel(), "REGISTRO");
         
         add(cardPanel, BorderLayout.CENTER);
         
-        // Mostrar login por defecto
+
         cardLayout.show(cardPanel, "LOGIN");
     }
     
     private JPanel crearLoginPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(240, 248, 255)); // Fondo azul claro
+        panel.setBackground(new Color(240, 248, 255)); 
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 15, 15, 15);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
-        // Título
+       
         JLabel lblTitulo = new JLabel("FORO - INICIAR SESIÓN");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
         lblTitulo.setForeground(new Color(41, 128, 185));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         
-        // Campos
+      
+        JLabel lblEmail = new JLabel("Email:");
+        lblEmail.setFont(new Font("Arial", Font.BOLD, 14));
+        lblEmail.setForeground(new Color(44, 62, 80));
+        
+        JLabel lblPassword = new JLabel("Contraseña:");
+        lblPassword.setFont(new Font("Arial", Font.BOLD, 14));
+        lblPassword.setForeground(new Color(44, 62, 80));
+        
+    
         txtEmail = new JTextField(25);
         txtEmail.setFont(new Font("Arial", Font.PLAIN, 14));
         txtEmail.setBorder(BorderFactory.createCompoundBorder(
@@ -68,7 +77,7 @@ public class LoginPanel extends JPanel {
             BorderFactory.createEmptyBorder(8, 8, 8, 8)
         ));
         
-        // Botones
+ 
         JButton btnLogin = new JButton("INICIAR SESIÓN");
         btnLogin.setFont(new Font("Arial", Font.BOLD, 18));
         btnLogin.setBackground(new Color(46, 204, 113));
@@ -83,17 +92,18 @@ public class LoginPanel extends JPanel {
         btnIrARegistro.setContentAreaFilled(false);
         btnIrARegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        // Posicionamiento
+  
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
         panel.add(lblTitulo, gbc);
         
         gbc.gridy++; gbc.gridwidth = 1;
-        panel.add(new JLabel("Email:"), gbc);
+        panel.add(lblEmail, gbc);
         gbc.gridx = 1;
         panel.add(txtEmail, gbc);
         
+        
         gbc.gridx = 0; gbc.gridy++;
-        panel.add(new JLabel("Contraseña:"), gbc);
+        panel.add(lblPassword, gbc);
         gbc.gridx = 1;
         panel.add(txtPassword, gbc);
         
@@ -103,7 +113,7 @@ public class LoginPanel extends JPanel {
         gbc.gridy++;
         panel.add(btnIrARegistro, gbc);
         
-        // Listeners
+  
         btnLogin.addActionListener(e -> login());
         btnIrARegistro.addActionListener(e -> cardLayout.show(cardPanel, "REGISTRO"));
         
@@ -118,13 +128,30 @@ public class LoginPanel extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
-        // Título
+
         JLabel lblTitulo = new JLabel("CREAR CUENTA");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
         lblTitulo.setForeground(new Color(34, 117, 171));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         
-        // Campos
+
+        JLabel lblNombre = new JLabel("Nombre:");
+        lblNombre.setFont(new Font("Arial", Font.BOLD, 14));
+        lblNombre.setForeground(new Color(44, 62, 80));
+        
+        JLabel lblEmailReg = new JLabel("Email:");
+        lblEmailReg.setFont(new Font("Arial", Font.BOLD, 14));
+        lblEmailReg.setForeground(new Color(44, 62, 80));
+        
+        JLabel lblPasswordReg = new JLabel("Contraseña:");
+        lblPasswordReg.setFont(new Font("Arial", Font.BOLD, 14));
+        lblPasswordReg.setForeground(new Color(44, 62, 80));
+        
+        JLabel lblPasswordConfirm = new JLabel("Confirmar contraseña:");
+        lblPasswordConfirm.setFont(new Font("Arial", Font.BOLD, 14));
+        lblPasswordConfirm.setForeground(new Color(44, 62, 80));
+        
+ 
         txtNombre = new JTextField(25);
         txtNombre.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(new Color(200, 200, 200)),
@@ -149,7 +176,6 @@ public class LoginPanel extends JPanel {
             BorderFactory.createEmptyBorder(6, 6, 6, 6)
         ));
         
-        // Botones
         JButton btnRegistrar = new JButton("REGISTRARSE");
         btnRegistrar.setBackground(new Color(46, 204, 113));
         btnRegistrar.setForeground(Color.GRAY);
@@ -162,27 +188,26 @@ public class LoginPanel extends JPanel {
         btnIrALogin.setBorderPainted(false);
         btnIrALogin.setContentAreaFilled(false);
         
-        // Posicionamiento
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
         panel.add(lblTitulo, gbc);
         
         gbc.gridy++; gbc.gridwidth = 1;
-        panel.add(new JLabel("Nombre completo:"), gbc);
+        panel.add(lblNombre, gbc);
         gbc.gridx = 1;
         panel.add(txtNombre, gbc);
         
         gbc.gridx = 0; gbc.gridy++;
-        panel.add(new JLabel("Email:"), gbc);
+        panel.add(lblEmailReg, gbc);
         gbc.gridx = 1;
         panel.add(txtEmailReg, gbc);
         
         gbc.gridx = 0; gbc.gridy++;
-        panel.add(new JLabel("Contraseña:"), gbc);
+        panel.add(lblPasswordReg, gbc);
         gbc.gridx = 1;
         panel.add(txtPasswordReg, gbc);
         
         gbc.gridx = 0; gbc.gridy++;
-        panel.add(new JLabel("Confirmar contraseña:"), gbc);
+        panel.add(lblPasswordConfirm, gbc);
         gbc.gridx = 1;
         panel.add(txtPasswordConfirm, gbc);
         
@@ -192,7 +217,6 @@ public class LoginPanel extends JPanel {
         gbc.gridy++;
         panel.add(btnIrALogin, gbc);
         
-        // Listeners
         btnRegistrar.addActionListener(e -> registrar(
             txtNombre.getText(),
             txtEmailReg.getText(),
@@ -206,7 +230,6 @@ public class LoginPanel extends JPanel {
     }
     
     private void registrar(String nombre, String email, String password, String confirmacion) {
-        // Validaciones
         if (nombre.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
             return;
@@ -222,7 +245,6 @@ public class LoginPanel extends JPanel {
             return;
         }
         
-        // Crear usuario y registrar
         autentificacion service = new autentificacion();
         Usuario nuevoUsuario = new Usuario(nombre, email, password);
         
@@ -243,7 +265,7 @@ public class LoginPanel extends JPanel {
 
         if (usuario != null) {
             mainFrame.mostrar(MainFrame.FORO);
-            mainFrame.setUsuarioActual(usuario); // Necesitas agregar este método
+            mainFrame.setUsuarioActual(usuario);
         } else {
             JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
         }
