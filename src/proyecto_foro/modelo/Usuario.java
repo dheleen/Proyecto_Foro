@@ -5,6 +5,7 @@
 package proyecto_foro.modelo;
 
 public class Usuario {
+
     private int id;
     private String nombre;
     private String email;
@@ -13,7 +14,14 @@ public class Usuario {
     // Constructor vacío
     public Usuario() {}
 
-    // Constructor con parámetros
+    // Constructor para registro (sin id)
+    public Usuario(String nombre, String email, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+    }
+
+    // Constructor completo (lectura desde BD)
     public Usuario(int id, String nombre, String email, String password) {
         this.id = id;
         this.nombre = nombre;
@@ -50,5 +58,8 @@ public class Usuario {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return nombre + " (" + email + ")";
+    }
 }
-
