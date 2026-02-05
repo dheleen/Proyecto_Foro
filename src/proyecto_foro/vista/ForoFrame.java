@@ -49,7 +49,7 @@ public class ForoFrame extends JFrame {
         Mensaje mensaje = new Mensaje(contenido, usuario.getId());
 
         mensajeDAO dao = new mensajeDAO();
-        dao.publicarMensaje(mensaje);
+        dao.publicar(mensaje);
 
         txtMensajes.append(usuario.getNombre() + ": " + contenido + "\n");
         txtNuevoMensaje.setText("");

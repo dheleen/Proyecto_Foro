@@ -6,14 +6,16 @@ package proyecto_foro.dao;
 
 import proyecto_foro.conexion.conexionBD;
 import proyecto_foro.modelo.Mensaje;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class mensajeDAO {
 
-    public boolean publicarMensaje(Mensaje mensaje) {
-        String sql = "INSERT INTO mensaje (contenido, id_usuario) VALUES (?, ?)";
+    public boolean publicar(Mensaje mensaje) {
+        String sql = "INSERT INTO mensaje(contenido,id_usuario) VALUES (?,?)";
+
         try (Connection conn = conexionBD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -23,8 +25,31 @@ public class mensajeDAO {
             return true;
 
         } catch (SQLException e) {
-            System.err.println("Error al publicar mensaje: " + e.getMessage());
             return false;
         }
     }
+
+    public List<Mensaje> listar() {
+        List<Mensaje> lista = new ArrayList<>();
+        String sql = "SELECT * FROM mensaje ORDER BY fecha DESC";
+
+        try (Connection conn = conexionBD.getConexion();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Mensaje m = new Mensaje();
+                m.setId(rs.getInt("id"));
+                m.setContenido(rs.getString("contenido"));
+                m.setFecha(rs.getTimestamp("fecha"));
+                m.setIdUsuario(rs.getInt("id_usuario"));
+                lista.add(m);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error listar mensajes");
+        }
+        return lista;
+    }
 }
+

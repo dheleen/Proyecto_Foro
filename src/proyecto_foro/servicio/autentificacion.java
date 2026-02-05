@@ -8,17 +8,20 @@ import proyecto_foro.dao.usuarioDAO;
 import proyecto_foro.modelo.Usuario;
 
 public class autentificacion {
-    private usuarioDAO usuarioDao;
 
-    public autentificacion() {
-        this.usuarioDao = new usuarioDAO();
-    }
+    private usuarioDAO usuarioDAO = new usuarioDAO();
 
     public Usuario login(String email, String password) {
-        Usuario u = usuarioDao.buscarPorEmail(email);
-        if (u != null && u.getPassword().equals(password)) {
-            return u;
+
+        if (email == null || email.isEmpty() ||
+            password == null || password.isEmpty()) {
+            return null;
         }
-        return null;
+
+        return usuarioDAO.login(email, password);
+    }
+
+    public boolean registrar(Usuario usuario) {
+        return usuarioDAO.registrarUsuario(usuario);
     }
 }
