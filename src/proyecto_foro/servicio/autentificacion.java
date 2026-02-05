@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+// autentificacion.java - MODIFICAR
 package proyecto_foro.servicio;
 
 import proyecto_foro.dao.usuarioDAO;
@@ -12,9 +13,11 @@ public class autentificacion {
     private usuarioDAO usuarioDAO = new usuarioDAO();
 
     public Usuario login(String email, String password) {
-
-        if (email == null || email.isEmpty() ||
-            password == null || password.isEmpty()) {
+        if (!validarEmail(email)) {
+            return null;
+        }
+        
+        if (password == null || password.length() < 6) {
             return null;
         }
 
@@ -22,6 +25,32 @@ public class autentificacion {
     }
 
     public boolean registrar(Usuario usuario) {
+        // Validaciones
+        if (!validarEmail(usuario.getEmail())) {
+            return false;
+        }
+        
+        if (usuario.getPassword() == null || usuario.getPassword().length() < 6) {
+            return false;
+        }
+        
+        if (usuario.getNombre() == null || usuario.getNombre().trim().isEmpty()) {
+            return false;
+        }
+        
+        // Verificar si email ya existe
+        if (usuarioDAO.emailExiste(usuario.getEmail())) {
+            return false;
+        }
+        
         return usuarioDAO.registrarUsuario(usuario);
+    }
+    
+    private boolean validarEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            return false;
+        }
+        // Expresión regular simple para validar email
+        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
 }
