@@ -70,15 +70,15 @@ public class LoginPanel extends JPanel {
         
         // Botones
         JButton btnLogin = new JButton("INICIAR SESIÓN");
-        btnLogin.setFont(new Font("Arial", Font.BOLD, 14));
+        btnLogin.setFont(new Font("Arial", Font.BOLD, 18));
         btnLogin.setBackground(new Color(46, 204, 113));
-        btnLogin.setForeground(Color.WHITE);
+        btnLogin.setForeground(Color.GRAY);
         btnLogin.setFocusPainted(false);
         btnLogin.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         
         JButton btnIrARegistro = new JButton("¿No tienes cuenta? Regístrate");
-        btnIrARegistro.setFont(new Font("Arial", Font.PLAIN, 12));
-        btnIrARegistro.setForeground(new Color(52, 152, 219));
+        btnIrARegistro.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnIrARegistro.setForeground(new Color(20, 20, 20));
         btnIrARegistro.setBorderPainted(false);
         btnIrARegistro.setContentAreaFilled(false);
         btnIrARegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -112,7 +112,7 @@ public class LoginPanel extends JPanel {
     
     private JPanel crearRegistroPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(255, 250, 240)); // Fondo diferente
+        panel.setBackground(new Color(208, 230, 242)); // Fondo diferente
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -121,7 +121,7 @@ public class LoginPanel extends JPanel {
         // Título
         JLabel lblTitulo = new JLabel("CREAR CUENTA");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-        lblTitulo.setForeground(new Color(155, 89, 182));
+        lblTitulo.setForeground(new Color(34, 117, 171));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         
         // Campos
@@ -151,13 +151,14 @@ public class LoginPanel extends JPanel {
         
         // Botones
         JButton btnRegistrar = new JButton("REGISTRARSE");
-        btnRegistrar.setBackground(new Color(155, 89, 182));
-        btnRegistrar.setForeground(Color.WHITE);
-        btnRegistrar.setFont(new Font("Arial", Font.BOLD, 14));
-        btnRegistrar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnRegistrar.setBackground(new Color(46, 204, 113));
+        btnRegistrar.setForeground(Color.GRAY);
+        btnRegistrar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnRegistrar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         
         JButton btnIrALogin = new JButton("← Volver a Login");
-        btnIrALogin.setForeground(new Color(52, 152, 219));
+        btnIrALogin.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnIrALogin.setForeground(new Color(20, 20, 20));
         btnIrALogin.setBorderPainted(false);
         btnIrALogin.setContentAreaFilled(false);
         

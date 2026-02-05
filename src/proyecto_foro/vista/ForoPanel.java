@@ -34,16 +34,16 @@ public class ForoPanel extends JPanel {
 
         // Panel superior con información de usuario y logout
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(new Color(52, 152, 219));
+        topPanel.setBackground(new Color(245, 245, 245));
         topPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
         
         JLabel lblUsuario = new JLabel();
         lblUsuario.setFont(new Font("Arial", Font.BOLD, 16));
-        lblUsuario.setForeground(Color.WHITE);
+        lblUsuario.setForeground(Color.BLACK);
         
         btnLogout = new JButton("Cerrar Sesión");
         btnLogout.setBackground(new Color(231, 76, 60));
-        btnLogout.setForeground(Color.WHITE);
+        btnLogout.setForeground(Color.GRAY);
         btnLogout.setFocusPainted(false);
         
         topPanel.add(lblUsuario, BorderLayout.WEST);
@@ -79,7 +79,7 @@ public class ForoPanel extends JPanel {
         JButton btnEnviar = new JButton("ENVIAR");
         btnEnviar.setFont(new Font("Arial", Font.BOLD, 14));
         btnEnviar.setBackground(new Color(46, 204, 113));
-        btnEnviar.setForeground(Color.WHITE);
+        btnEnviar.setForeground(Color.GRAY);
         btnEnviar.setFocusPainted(false);
         btnEnviar.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25));
         
