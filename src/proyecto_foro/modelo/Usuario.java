@@ -4,17 +4,22 @@
  */
 package proyecto_foro.modelo;
 
-public class usuario {
+public class Usuario {
+
     private int id;
     private String nombre;
     private String email;
     private String password;
 
-    // Constructor vacío
-    public usuario() {}
+    public Usuario() {}
 
-    // Constructor con parámetros
-    public usuario(int id, String nombre, String email, String password) {
+    public Usuario(String nombre, String email, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Usuario(int id, String nombre, String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -50,5 +55,10 @@ public class usuario {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return nombre + " (" + email + ")";
+    }
 }
+
 
