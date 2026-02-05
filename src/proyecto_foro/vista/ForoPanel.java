@@ -49,7 +49,7 @@ public class ForoPanel extends JPanel {
     
     private void crearPanelSuperior() {
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(COLOR_PRINCIPAL);
+        topPanel.setBackground(COLOR_RESPUESTA);
         topPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
         
         JLabel lblUsuario = new JLabel();
@@ -177,7 +177,7 @@ public class ForoPanel extends JPanel {
         btnEnviar.setBackground(new Color(46, 204, 113));
         btnEnviar.setForeground(Color.GRAY);
         btnEnviar.setFocusPainted(false);
-        btnEnviar.setBorder(new EmptyBorder(10, 15, 10, 15));
+        btnEnviar.setBorder(new EmptyBorder(10, 8, 10, 8));
         
         bottomPanel.add(textAreaPanel, BorderLayout.CENTER);
         bottomPanel.add(btnEnviar, BorderLayout.EAST);
