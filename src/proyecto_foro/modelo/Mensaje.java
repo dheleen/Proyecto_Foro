@@ -7,26 +7,26 @@ package proyecto_foro.modelo;
 import java.sql.Timestamp;
 
 public class Mensaje {
-
     private int id;
     private String contenido;
     private Timestamp fecha;
     private int idUsuario;
-
-    // Constructor vacío
-    public Mensaje() {
-    }
-
+    private Integer idMensajePadre; 
+    private String nombreUsuario; 
+    
+    
+    public Mensaje() {}
+    
     public Mensaje(String contenido, int idUsuario) {
         this.contenido = contenido;
         this.idUsuario = idUsuario;
+        this.idMensajePadre = null; 
     }
-
-    public Mensaje(int id, String contenido, Timestamp fecha, int idUsuario) {
-        this.id = id;
+    
+    public Mensaje(String contenido, int idUsuario, int idMensajePadre) {
         this.contenido = contenido;
-        this.fecha = fecha;
         this.idUsuario = idUsuario;
+        this.idMensajePadre = idMensajePadre; 
     }
 
     // Getters y Setters
@@ -56,6 +56,27 @@ public class Mensaje {
     }
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+    
+    public Integer getIdMensajePadre() {
+        return idMensajePadre;
+    }
+    
+    public void setIdMensajePadre(Integer idMensajePadre) {
+        this.idMensajePadre = idMensajePadre;
+    }
+    
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+    
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    
+    
+    public boolean esRespuesta() {
+        return idMensajePadre != null;
     }
 }
 
